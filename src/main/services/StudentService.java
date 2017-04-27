@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by admin on 19.04.2017.
  */
-@Service
+@Profiling
 public class StudentService implements StudentServiceInterface {
 
     //ManagementSystem managementSystem = new ManagementSystem();

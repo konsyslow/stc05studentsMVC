@@ -12,16 +12,13 @@ public class WhiteList implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        String login = (String) ((HttpServletRequest)servletRequest).getSession().getAttribute("login");
 
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
-        String userLogin = (String) ((HttpServletRequest) servletRequest)
-                .getSession().getAttribute("userLogin");
-        if (userLogin != null) {
+        if (login != null){
             filterChain.doFilter(servletRequest, servletResponse);
-        } else {
-            ((HttpServletResponse) servletResponse)
-                    .sendRedirect(((HttpServletRequest) servletRequest).getContextPath() + "/");
+        }else{
+            ((HttpServletResponse)servletResponse).sendRedirect(((HttpServletRequest)servletRequest).getContextPath() + "/error");
         }
     }
 

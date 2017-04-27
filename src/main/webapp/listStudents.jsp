@@ -17,6 +17,8 @@
 <h1>
     <%=message%>
 </h1>
+<form method="get">
+    <td><input type="button" value="Добавить" onclick="location.href = '<%= request.getContextPath() %>/student'"></td>
 
  <table border="1">
         <thead>
@@ -28,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-    <c:forEach items="${requestScope.students}" var="student">
+    <c:forEach items="${listStudents}" var="student">
         <tr>
             <td><c:out value="${student.id}"></c:out></td>
             <td><c:out value="${student.name}"></c:out></td>
@@ -38,6 +40,7 @@
     </c:forEach>
         <tbody/>
 </table>
+</form>
 </body>
 </html>
 

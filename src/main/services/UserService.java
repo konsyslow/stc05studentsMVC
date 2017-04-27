@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserServiceInterface {
     private    UserDAO userDAO;// = new UserDAOImpl(ManagementSystem.getCon());
 
+    @Benchmark
     public Users auth(String login, String password) {
         Users user = userDAO.findUserByLoginAndPassword(login, password);
         //Users user = new Users(1,"login2","login2", 0);
